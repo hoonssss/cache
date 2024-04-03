@@ -30,6 +30,10 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //redis, lettuce
+    implementation 'org.springframework.data:spring-data-redis:3.1.2'
+    implementation 'io.lettuce:lettuce-core:6.2.5.RELEASE'
 }
 
 tasks.named('test') {
