@@ -2,6 +2,7 @@ package com.example.cache.service;
 
 import com.example.cache.domain.entity.User;
 import com.example.cache.repository.UserRepository;
+import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class UserService {
             return cacheUser;
         }
         User getUser = userRepository.findById(id).orElseThrow();
-        userRedisTemplate.opsForValue().set(getFormatted(id), getUser);
+        userRedisTemplate.opsForValue().set(getFormatted(id), getUser, Duration.ofSeconds(30));
         return getUser;
     }
 
